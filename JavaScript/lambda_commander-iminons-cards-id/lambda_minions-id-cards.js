@@ -3,6 +3,17 @@
 // minion taks simply assigned by their ID 
 // each day they work on that task 
 //  1 day task = 99 integres , shift advance 
+
+function generateRandomTasks (totalTask){  // this to generate randomate taks 
+    var randomArray = [];
+
+    for (var task = 0; task < totalTask; task ++){
+        var randomizeTaskID = Math.floor(Math.random() * 10000) + 1 ;
+        randomArray.push(randomizeTaskID);
+    }
+    return randomArray;
+}
+
 function answerData(data, n) {
     var recentReport = {};
 
@@ -13,7 +24,7 @@ function answerData(data, n) {
             recentReport[minionID] = 1;
         }
         else {
-            recentReport[minionID] = recentReport[minionID] + 1;
+            recentReport[minionID] = recentReport[minionID] + 1; 
         }
     }    
          var lastResults = [];  
@@ -30,7 +41,8 @@ function answerData(data, n) {
 function filesReports (taskData,minions) {
     var filteredResults = answerData(taskData,minions);
 
-    console.log(filteredResults);
+    console.log("realData     :", taskData);
+    console.log("filteredData :", filteredResults);
 
     var currentStatus = "";
 
@@ -44,15 +56,7 @@ function filesReports (taskData,minions) {
 }
 
 // -- test code if it works 
-var dayTask = [5, 10, 15, 10, 7,];
 var n = 1;
 
-var nightTask = [ 5, 10, 12, 3, 5, 7, 12, 3, 6, 10, 13, 4, 4, 9, 18, 2]
-var n = 1;
-
-var noreliableData = [1,2,3,4,5,6,7,8]
-var n = 1;
-
-filesReports(dayTask,n);
-filesReports(nightTask,n);
-filesReports(noreliableData,n);
+var automateGetData = generateRandomTasks (100);
+filesReports (automateGetData,n);
